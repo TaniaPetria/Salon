@@ -1,0 +1,60 @@
+﻿@page
+@model Salon.Pages.ProgramariClienti.IndexModel
+@{
+}
+
+
+
+        <h3>Alege serviciu</h3>
+
+<table class="table">
+    <tbody>
+            @foreach (var item in Model.Serviciu)
+            {var parms = new Dictionary<string, string>
+            {
+                { "serv", item.ID.ToString() },
+                { "spec", "0" }
+            };
+                <tr>
+                <td>@Html.DisplayFor(modelItem => item.Denumire)</td>
+                <td>
+                    Durata: @Html.DisplayFor(modelItem => item.Durata)</td>
+                <td>Pret:@Html.DisplayFor(modelItem => item.Pret)</td>
+                <td>Descriere:@Html.DisplayFor(modelItem => item.Descriere)</td>
+                <td>
+                    <a class="btn btn-primary"  asp-page="./SelectAngajat" asp-all-route-data="parms">Alege</a>
+                </td>
+   
+            </tr>
+
+            }
+    </tbody>
+</table>
+
+
+
+<h3>Alege specialistul </h3>
+
+<table class="table">
+    <tbody>
+        @foreach (var item in Model.Angajat)
+        {var parms = new Dictionary<string, string>
+            {
+                { "serv", "0" },
+                { "spec", item.ID.ToString() }
+            };
+
+
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nume)</td>
+                
+                <td>
+                    @*<a asp-page="./SelectServiciu" asp-route-id="@item.ID">Selectare</a>*@
+                    <a class="btn btn-primary" asp-page="./SelectServiciu" asp-all-route-data="parms">Alege</a>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

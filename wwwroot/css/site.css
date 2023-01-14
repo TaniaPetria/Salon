@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+.wrap_content{
+    padding:20px;
+}
+.wrap_content1 {
+    /*margin-top: 40px;*/
+    /*margin-bottom: 80px;*/
+    width: 100%;
+    /*height: auto;*/
+    min-height: 100vh;
+    background-image: url("../images/background.jpg"), linear-gradient(rgba(28, 46, 74, 1), rgba(28, 46, 74, 1));
+    background-blend-mode: overlay;
+    text-align: center;
+    padding: 50px 0;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+.content1 {
+    height: auto;
+    width: 80%;
+    display: flex;
+    /*justify-content: center;*/
+    
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    text-align: left;
+    margin: 40px;
+    padding-left: 100px;
+    
+}
+
+

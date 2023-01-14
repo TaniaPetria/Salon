@@ -1,0 +1,61 @@
+﻿@page
+@model Salon.Pages.ProgramariClienti.SelectAngajatModel
+@{
+}
+
+
+<h3><a class="btn btn-primary"  asp-page="./Index"><</a> Serviciu ales</h3>
+
+
+<div class="row">
+    <div class="col-md-8" style="max-width:500px">
+        <hr />
+       
+        <dl class="row">
+          
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Serviciu.Denumire)
+            </dd>
+
+        
+        </dl>
+        <hr />
+        <h5>Alege serviciu</h5>
+          <br />
+                @foreach (var srv in Model.Serviciu.AngajatiServicii)
+                {
+                           var parms = new Dictionary<string, string>
+                                {
+                                    { "spec",  srv.Angajat.ID.ToString() },
+                                    { "serv", @ViewBag.serv.ToString() }
+                                };
+                            <div class="d-flex flex-row w-100">
+                                <div class="w-75">
+                                    <h6>  @srv.Angajat.Nume </h6>
+                                    
+                                </div>
+                                <div class="d-flex flex-row align-items-center justify-content-end">
+                                @*<button class="btn btn-primary" onclick="SelectName('select_client.html',400,500)" type="button">Programeaza</button>*@
+                                <a class="btn btn-primary" asp-page="./SelectProgramare" asp-all-route-data="parms">Programeaza</a>
+
+                    </div>
+                            </div>
+                            <hr />
+                        
+                }
+                 
+                
+        
+       
+    </div>
+</div>
+
+<div>
+    
+    @*<button>Click</button>*@
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

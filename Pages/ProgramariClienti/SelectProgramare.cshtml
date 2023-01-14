@@ -1,0 +1,45 @@
+﻿@page
+@model Salon.Pages.ProgramariClienti.SelectProgramareModel
+@{
+}
+<h3><a class="btn btn-primary"  asp-page="./Index"><</a> Specialist ales</h3>
+ @Html.DisplayFor(model => model.Angajat.Nume)
+
+<h3><a class="btn btn-primary"  asp-page="./Index"><</a> Serviciu ales</h3>
+
+@Html.DisplayFor(model => model.Serviciu.Denumire)
+
+
+
+<table class="calendar">
+    <thead>
+        <tr>
+            <th>Luni</th>
+            <th>Marti</th>
+            <th>Miercuri</th>
+            <th>Joi</th>
+            <th>Vineri</th>
+            <th>Sambata</th>
+            <th>Duminica</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < 4; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 7; j++)
+                {
+                    <td data-date="@Date.AddDays(i * 7 + j).ToString("yyyy-MM-dd")">
+                        <div class="available-times">
+                            @*@foreach(var interval in Model.IntervaleLibere.Where(x => x.Item1.Date == Date.AddDays(i * 7 + j).Date))
+                            {
+                                    <span class="available-time">@interval.Item2.ToString(@"hh:mm") - @interval.Item3.ToString(@"hh:mm")</span>
+                             }*@
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>
