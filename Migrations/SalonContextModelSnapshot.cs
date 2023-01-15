@@ -34,10 +34,6 @@ namespace Salon.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -121,7 +117,7 @@ namespace Salon.Migrations
                     b.Property<double>("Pret")
                         .HasColumnType("float");
 
-                    b.Property<int>("ServiciuID")
+                    b.Property<int?>("ServiciuID")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
@@ -199,9 +195,7 @@ namespace Salon.Migrations
 
                     b.HasOne("salon.Models.Serviciu", "Serviciu")
                         .WithMany()
-                        .HasForeignKey("ServiciuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiciuID");
 
                     b.Navigation("Angajat");
 

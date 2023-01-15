@@ -4,9 +4,16 @@
 
 namespace Salon.Migrations
 {
-    public partial class migrare4_modificareprogramari2 : Migration
+    public partial class Initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "Email",
+                table: "Angajat");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "Email",
@@ -14,13 +21,6 @@ namespace Salon.Migrations
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Email",
-                table: "Angajat");
         }
     }
 }

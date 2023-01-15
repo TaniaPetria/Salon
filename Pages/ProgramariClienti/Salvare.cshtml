@@ -1,0 +1,41 @@
+﻿@page
+@model Salon.Pages.ProgramariClienti.SalvareModel
+
+@{
+    ViewData["Title"] = "Salvare";
+}
+
+
+@Html.DisplayFor(model => model.Programare.Pret)
+
+<a class="btn btn-primary" asp-page="./Index"></a>
+<h1>Verifica si confirma</h1>
+
+<h3>@ViewBag.ziprogramare</h3>
+<h3>@ViewBag.oraprogramare</h3>
+<hr />
+<h3>Specialist ales</h3>
+@Html.DisplayFor(model => model.Angajat.Nume)
+
+<h3>Serviciu ales</h3>
+@Html.DisplayFor(model => model.Serviciu.Denumire)
+@Html.DisplayFor(model => model.Serviciu.Pret),
+@Html.DisplayFor(model => model.Serviciu.Durata)
+
+
+<h3>Plată în locație</h3>
+Plătești la salon în numerar sau prin alte metode de plată puse la dispoziție.
+
+        <form method="post">
+             <div class="form-group">
+                
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+ 
+
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

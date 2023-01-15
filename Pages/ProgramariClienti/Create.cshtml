@@ -1,0 +1,69 @@
+﻿@page
+@model Salon.Pages.ProgramariClienti.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Model.Programare.Durata = 30;
+}
+
+<h1>Create</h1>
+
+<h4>Programare</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Programare.Date" class="control-label"></label>
+                <input asp-for="Programare.Date" class="form-control" />
+                <span asp-validation-for="Programare.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programare.StartTime" class="control-label"></label>
+                <input asp-for="Programare.StartTime" class="form-control" />
+                <span asp-validation-for="Programare.StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programare.EndTime" class="control-label"></label>
+                <input asp-for="Programare.EndTime" class="form-control" />
+                <span asp-validation-for="Programare.EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programare.ClientID" class="control-label"></label>
+                <select asp-for="Programare.ClientID" class ="form-control" asp-items="ViewBag.ClientID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programare.ServiciuID" class="control-label"></label>
+                <select asp-for="Programare.ServiciuID" class ="form-control" asp-items="ViewBag.ServiciuID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programare.AngajatID" class="control-label"></label>
+                <select asp-for="Programare.AngajatID" class ="form-control" asp-items="ViewBag.AngajatID"></select>
+            </div>
+            @Html.DisplayNameFor(model => model.Programare.Durata)
+            @*<div class="form-group">
+
+                <label asp-for="Programare.Durata" class="control-label"></label>
+                <input asp-for="Programare.Durata" class="form-control" />
+                <span asp-validation-for="Programare.Durata" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Programare.Pret" class="control-label"></label>
+                <input asp-for="Programare.Pret" class="form-control" />
+                <span asp-validation-for="Programare.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

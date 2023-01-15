@@ -2,6 +2,9 @@
 @model Salon.Pages.ProgramariClienti.SelectProgramareModel
 @{
 }
+
+
+
 <h3><a class="btn btn-primary"  asp-page="./Index"><</a> Specialist ales</h3>
  @Html.DisplayFor(model => model.Angajat.Nume)
 
@@ -9,11 +12,9 @@
 
 @Html.DisplayFor(model => model.Serviciu.Denumire)
 
-
-
 <table class="calendar">
     <thead>
-        <tr>
+        <tr style="border-style:solid; border-color:brown;">
             <th>Luni</th>
             <th>Marti</th>
             <th>Miercuri</th>
@@ -24,22 +25,36 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < 4; i++)
+        @for (int i = 0; i < 3; i++)
         {
             <tr>
                 @for (int j = 0; j < 7; j++)
                 {
-                    <td data-date="@Date.AddDays(i * 7 + j).ToString("yyyy-MM-dd")">
-                        <div class="available-times">
-                            @*@foreach(var interval in Model.IntervaleLibere.Where(x => x.Item1.Date == Date.AddDays(i * 7 + j).Date))
+                    <td>
+                        <div  style="border-style:solid; border-color:brown;">
+                            @DateTime.Today.AddDays(i*7+j)
+                            @foreach (var interval in Model.IntervaleLibere.Where(p => p.Item1.Date == DateTime.Today.AddDays(i*7+j)))
                             {
-                                    <span class="available-time">@interval.Item2.ToString(@"hh:mm") - @interval.Item3.ToString(@"hh:mm")</span>
-                             }*@
+
+                                var parms = new Dictionary<string, string>
+                                {
+                                    { "spec", @ViewBag.spec.ToString() },
+                                    { "serv", @ViewBag.serv.ToString() },
+                                    {"day",interval.Item1.ToString(@"ddMMyyyy")},
+                                    {"time",interval.Item2.ToString(@"hh\:mm") }
+                                };
+                                <span class="available-time">
+                                    <a asp-page="./Salvare" asp-all-route-data="parms">@interval.Item2.ToString(@"hh\:mm")</a> <br>
+                                    @*<a asp-page="./Salvare" asp-route-data="@interval.Item2.ToString(@"hh\:mm")-@interval.Item3.ToString(@"hh\:mm")">@interval.Item2.ToString(@"hh\:mm") - @interval.Item3.ToString(@"hh\:mm")</a>*@
+                                </span>
+                            }
                         </div>
                     </td>
                 }
             </tr>
+            
         }
     </tbody>
-
 </table>
+
+

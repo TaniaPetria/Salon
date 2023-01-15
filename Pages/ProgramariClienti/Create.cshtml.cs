@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Salon.Data;
 using salon.Models;
 
-namespace Salon.Pages.Programari
+namespace Salon.Pages.ProgramariClienti
 {
     public class CreateModel : PageModel
     {
@@ -18,30 +18,26 @@ namespace Salon.Pages.Programari
         {
             _context = context;
         }
-        [BindProperty]
-        public Programare Programare { get; set; }
+
         public IActionResult OnGet()
         {
-        ViewData["AngajatID"] = new SelectList(_context.Angajat, "ID", "Nume");
-        ViewData["ClientID"] = new SelectList(_context.Client, "ID", "Nume");
-        ViewData["ServiciuID"] = new SelectList(_context.Serviciu, "ID", "Denumire");
-
-            
-
-
+        ViewData["AngajatID"] = new SelectList(_context.Angajat, "ID", "ID");
+        ViewData["ClientID"] = new SelectList(_context.Client, "ID", "ID");
+        ViewData["ServiciuID"] = new SelectList(_context.Serviciu, "ID", "ID");
             return Page();
         }
 
-        
+        [BindProperty]
+        public Programare Programare { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
+          //if (!ModelState.IsValid)
+          //  {
+          //      return Page();
+          //  }
 
             _context.Programare.Add(Programare);
             await _context.SaveChangesAsync();

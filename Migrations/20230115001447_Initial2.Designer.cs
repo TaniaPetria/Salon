@@ -12,8 +12,8 @@ using Salon.Data;
 namespace Salon.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    [Migration("20230113114039_migrare4_modificareprogramari")]
-    partial class migrare4_modificareprogramari
+    [Migration("20230115001447_Initial2")]
+    partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,17 +95,17 @@ namespace Salon.Migrations
 
             modelBuilder.Entity("salon.Models.Programare", b =>
                 {
-                    b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<int>("AngajatID")
                         .HasColumnType("int");
 
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("DataOra")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -119,7 +119,7 @@ namespace Salon.Migrations
                     b.Property<double>("Pret")
                         .HasColumnType("float");
 
-                    b.Property<int>("ServiciuID")
+                    b.Property<int?>("ServiciuID")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
@@ -197,9 +197,7 @@ namespace Salon.Migrations
 
                     b.HasOne("salon.Models.Serviciu", "Serviciu")
                         .WithMany()
-                        .HasForeignKey("ServiciuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiciuID");
 
                     b.Navigation("Angajat");
 

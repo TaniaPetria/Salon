@@ -23,12 +23,12 @@ namespace salon.Models
         public TimeSpan EndTime { get; set; }
 
 
-        public int ClientID { get; set; }
-        public Client Client { get; set; }
+        public int? ClientID { get; set; }
+        public Client? Client { get; set; }
         public int? ServiciuID { get; set; }
-        public Serviciu Serviciu { get; set; }
-        public int AngajatID { get; set; }
-        public Angajat Angajat { get; set; }
+        public Serviciu? Serviciu { get; set; }
+        public int? AngajatID { get; set; }
+        public Angajat? Angajat { get; set; }
         public int Durata { get; set; }
         public double Pret { get; set; }
 
