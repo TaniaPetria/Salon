@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Salon.Data;
 using salon.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Salon.Pages.Programari
 {
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly Salon.Data.SalonContext _context;

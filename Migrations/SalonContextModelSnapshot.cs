@@ -79,11 +79,9 @@ namespace Salon.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nume")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<string>("Telefon")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -99,10 +97,10 @@ namespace Salon.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("AngajatID")
+                    b.Property<int?>("AngajatID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClientID")
+                    b.Property<int?>("ClientID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -183,15 +181,11 @@ namespace Salon.Migrations
                 {
                     b.HasOne("salon.Models.Angajat", "Angajat")
                         .WithMany()
-                        .HasForeignKey("AngajatID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AngajatID");
 
                     b.HasOne("salon.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientID");
 
                     b.HasOne("salon.Models.Serviciu", "Serviciu")
                         .WithMany()
